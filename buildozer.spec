@@ -35,7 +35,7 @@ version = 1.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,google_trans_new,pillow,kivmob,android,pyjnius, protobuf==3.15.6,google-auth==1.28.0,google-api-core==1.26.1, googleapis-common-protos==1.53.0,kivymd,grpcio
+requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,google_trans_new,pillow,kivmob,android,google,google.cloud,pyjnius,google-cloud-storage==1.20.0,kivymd
 
 
 # (str) Custom source folders for requirements
@@ -232,10 +232,10 @@ android.arch = armeabi-v7a
 #p4a.branch = master
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-p4a.source_dir = pythonforandroid
+#p4a.source_dir = pythonforandroid
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
-p4a.local_recipes = pythonforandroid/recipes/grpcio/__init__.py
+#p4a.local_recipes = pythonforandroid/recipes/grpcio/__init__.py
 
 # (str) Filename to the hook for p4a
 #p4a.hook =

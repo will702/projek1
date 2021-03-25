@@ -2,7 +2,11 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 
 from function.config import Config
-import os
+from google.cloud import storage
+from kivy.network.urlrequest import UrlRequest
+import certifi
+from kivy.clock import  mainthread
+
 from string import  ascii_lowercase
 from random import randint ,choice
 
@@ -28,8 +32,55 @@ class OneApp(MDApp):
         try:
             self.picture = filename
 
+
+            """Uploads a file to the bucke-server-teset."""
+            bucket_name = 'typetowritebucket'
+            destination_blob_name = "test-storage-blob.png"
+            debug = True
+
+            if not debug == True:
+                storage_client = storage.Client()
+            else:
+                cred_file = 'ServiceAccountToken.json'
+                storage_client = storage.Client.from_service_account_json(cred_file)
+
+            bucket = storage_client.bucket(bucket_name)
+            blob = bucket.blob(destination_blob_name)
+
+            blob.upload_from_filename(self.picture)
+            print(
+                "File {} uploaded to {}.".format(
+                    self.picture, destination_blob_name
+                )
+            )
+
+            self.hit_cloud_function(destination_blob_name)
+
+
         except:
             pass
+
+    @mainthread
+    def hit_cloud_function(self, blob_name):
+
+        from urllib.parse import urlencode
+        msg_data = urlencode({'message': blob_name})
+        headers = {'Content-type': 'application/x-www-form-urlencoded',
+                   'Accept': 'text/plain'}
+
+        trigger_url = "https://us-central1-type-to-write.cloudfunctions.net/function-1"
+        UrlRequest(trigger_url, req_body=msg_data, req_headers=headers, ca_file=certifi.where(),
+                   on_failure=self.error, on_error=self.error, on_success=self.success)
+
+    def error(self, *args):
+        self.screen.nav_layout.screen_manager.screen1.isi.text = str(f'error{args}')
+    def success(self, request, response):
+
+        print("Success!")
+        print(response)
+        self.screen.nav_layout.screen_manager.screen1.isi.text = response
+        self.screen.change_screen('screen1')
+
 
     def take_picture(self):
         try:
@@ -59,42 +110,12 @@ class OneApp(MDApp):
 
 
  
-    picture = 'kbw.png'
-
-    def change_handwriting_to_text(self):
-        from google.cloud import vision
-        import io
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'ServiceAccountToken.json'
-
-        client = vision.ImageAnnotatorClient()
-
-        with io.open(self.picture, 'rb') as image_file:
-            content = image_file.read()
-
-        image = vision.Image(content=content)
-
-        response = client.document_text_detection(image=image)
-
-        for page in response.full_text_annotation.pages:
-            for block in page.blocks:
-
-
-                for paragraph in block.paragraphs:
-
-                    for word in paragraph.words:
-                        word_text = ''.join([
-                            symbol.text for symbol in word.symbols
-                        ])
-
-                        self.screen.nav_layout.screen_manager.screen1.isi.text = word_text
 
 
 
-        if response.error.message:
-            raise Exception(
-                '{}\nFor more info on error messages, check: '
-                'https://cloud.google.com/apis/design/errors'.format(
-                    response.error.message))
+
+
+
 
 
 
