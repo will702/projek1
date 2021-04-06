@@ -12,7 +12,7 @@ package.domain = tyt.typetowrite
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,ttf,txt,json,wav,atlas,so
+source.include_exts = py,png,jpg,kv,ttf,txt,json,wav,atlas
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -35,7 +35,7 @@ version = 1.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,google_trans_new,pillow,kivmob,android,google,google.cloud,pyjnius,google-cloud-storage==1.20.0,kivymd
+requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,google_trans_new,pillow,kivmob,android,google,google.cloud,pyjnius,google-cloud-storage==1.20.0,kivymd,google.api.core,google-cloud-core,google-resumable-media,google-crc32c
 
 
 # (str) Custom source folders for requirements
