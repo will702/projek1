@@ -114,6 +114,7 @@ class Fung:
 
         if os.path.exists(f'/sdcard/DCIM/TypeToWrite/') == True:
             self.kertas.save(self.lokasi)
+        
 
 
 
