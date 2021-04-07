@@ -2,7 +2,7 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 
 from layout.config import Config
-
+from kivmob import KivMob
 
 from string import  ascii_lowercase
 from random import randint ,choice
@@ -60,6 +60,10 @@ class OneApp(MDApp):
 
 
 
+        self.ads = KivMob('ca-app-pub-1818238534900904~2025018602')
+        self.ads.new_banner('ca-app-pub-1818238534900904/4048546717', top_pos=False)
+        self.ads.request_banner()
+        self.ads.show_banner()
 
         self.screen = Builder.load_file(self.config.screen)
 

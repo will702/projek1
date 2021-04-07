@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a60c328-5b18-4ce4-9705-88a40e1a54ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/buildozer.spec" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/kivy_package/kivy-based/layout/nulis.py" beforeDir="false" afterPath="$PROJECT_DIR$/kivy_package/kivy-based/layout/nulis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kivy_package/kivy-based/qqhd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyqt_package/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyqt_package/nulis.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +42,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/kivy_package/kivy-based/bahan" />
       <recent name="$PROJECT_DIR$/kivy_package/kivy-based" />
+      <recent name="$PROJECT_DIR$/kivy_package/kivy-based/bahan" />
       <recent name="$PROJECT_DIR$/kivy_package/kivy-based/layout" />
       <recent name="$PROJECT_DIR$/kivy_package/kivy-based/main_function" />
       <recent name="$PROJECT_DIR$/kivy_package" />
