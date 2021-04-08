@@ -1,12 +1,12 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
-
 from layout.config import Config
 from kivmob import KivMob
-
 from string import  ascii_lowercase
 from random import randint ,choice
+import os
 
+os.environ["KIVY_NO_CONSOLELOG"] = "1"
 
 def randoming_string():
     letters = ascii_lowercase
